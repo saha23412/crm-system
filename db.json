@@ -1,0 +1,134 @@
+{
+  "users": [
+    {
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/166.jpg",
+      "username": "Alexander",
+      "password": "123456",
+      "email": "kipriyanovsaha@gmail.com",
+      "status": "admin",
+      "id": "1"
+    },
+    {
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/560.jpg",
+      "username": "Olya",
+      "password": "123456",
+      "email": "olya@gmail.com",
+      "status": "admin",
+      "id": "2"
+    },
+    {
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/282.jpg",
+      "username": "Ivan",
+      "password": "123456",
+      "email": "ivan@gmail.com",
+      "status": "user",
+      "id": "3"
+    },
+    {
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/165.jpg",
+      "username": "username 4",
+      "password": "password 4",
+      "email": "email 4",
+      "status": "admin",
+      "id": "4"
+    },
+    {
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/335.jpg",
+      "username": "username 5",
+      "password": "password 5",
+      "email": "email 5",
+      "status": "admin",
+      "id": "5"
+    },
+    {
+      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1238.jpg",
+      "username": "username 6",
+      "password": "password 6",
+      "email": "email 6",
+      "status": "user",
+      "id": "6"
+    }
+  ],
+  "tasks": [
+    {
+      "userId": "1",
+      "text": "Починка",
+      "title": "Починка",
+      "significance": "easy",
+      "createdDate": "26.12.2023",
+      "id": "2"
+    },
+    {
+      "userId": "1",
+      "text": "Починка",
+      "title": "Починка",
+      "significance": "medium",
+      "createdDate": "26.12.2023",
+      "id": "3"
+    },
+    {
+      "userId": "1",
+      "text": "Починка",
+      "title": "Починка",
+      "significance": "medium",
+      "createdDate": "26.12.2023",
+      "id": "4"
+    },
+    {
+      "userId": "1",
+      "text": "Починка",
+      "title": "Починка",
+      "significance": "hard",
+      "createdDate": "26.12.2023",
+      "id": "5"
+    },
+    {
+      "userId": "1",
+      "text": "Починить принтер",
+      "title": "Починка",
+      "significance": "easy",
+      "createdDate": "26.12.2023",
+      "id": "6"
+    },
+    {
+      "id": "1704668744694",
+      "userId": "1",
+      "text": "Проверка",
+      "title": "Починка",
+      "significance": "easy",
+      "createdDate": "08.01.2024"
+    },
+    {
+      "id": "1704668749252",
+      "userId": "1",
+      "text": "Проверка",
+      "title": "Закупка",
+      "significance": "easy",
+      "createdDate": "08.01.2024"
+    },
+    {
+      "id": "1704668756539",
+      "userId": "1",
+      "text": "Проверка",
+      "title": "Починка",
+      "significance": "medium",
+      "createdDate": "08.01.2024"
+    },
+    {
+      "id": "1704668763499",
+      "userId": "1",
+      "text": "Проверка",
+      "title": "Закупка",
+      "significance": "medium",
+      "createdDate": "08.01.2024"
+    },
+    {
+      "id": "1704668768220",
+      "userId": "1",
+      "text": "Проверка",
+      "title": "Закупка",
+      "significance": "medium",
+      "createdDate": "08.01.2024"
+    }
+  ]
+}
