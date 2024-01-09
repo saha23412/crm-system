@@ -13,12 +13,13 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
       component="article"
       sx={{
         width: "100%",
+        marginTop: "10px",
         borderRadius: 1,
         border: `${idTask === task.id ? 4 : 1}px solid ${
           colorTask[task.significance]
         }`,
         padding: 1,
-        height: "20%",
+        height: "125px",
       }}
     >
       <Box
