@@ -3,12 +3,15 @@ import Box from "@mui/material/Box";
 import TasksList from "@/components/tasks-list/tasks-list";
 import Pagination from "@mui/material/Pagination";
 import { useGetTasksQuery } from "@/store/service/task/task-api";
-import { useEffect } from "react";
 import PaginationItem from "@mui/material/PaginationItem";
 import paginationLimit from "@/constants/pagination-limit";
 import Link from "next/link";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useParams, usePathname, useSearchParams } from "next/navigation";
 import SkeletonTasks from "@/components/loader/skeleton-tasks/skeleton-tasks";
+import TasksListNot from "@/components/tasks-list-not/tasks-list-not";
+import PanelFilter from "../panel-filter/panel-filter";
+import { useRouter } from "next/navigation";
+import ButtonCustom from "@/components/ui/button/button";
 
 const TaskListTemplate = () => {
   const searchParams = useSearchParams();
@@ -16,6 +19,7 @@ const TaskListTemplate = () => {
   const { isLoading, data, isFetching, isError } = useGetTasksQuery({
     page: currentPage,
     limit: paginationLimit,
+    significance: "easy",
   });
 
   if (isLoading || isFetching) {
@@ -37,19 +41,23 @@ const TaskListTemplate = () => {
           flexDirection: "column",
         }}
       >
+        <PanelFilter />
         <TasksList
           tasks={data.response}
           sx={{
-            gap: "10px",
             height: "90%",
-            display: "flex",
-            flexDirection: "column",
           }}
         />
         <Pagination
           count={count}
           page={currentPage}
           siblingCount={0}
+          sx={{
+            height: "10%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-end",
+          }}
           boundaryCount={1}
           renderItem={(item) => {
             return (
@@ -72,7 +80,8 @@ const TaskListTemplate = () => {
     );
   }
   if (data && data.response && data.response.length === 0) {
-    return <>Все</>;
+    const count = Math.ceil(data.total / paginationLimit);
+    return <TasksListNot count={count} />;
   }
 };
 

@@ -6,7 +6,8 @@ const PanelFilter = () => {
   return (
     <Box
       sx={{
-        widht: "100%",
+        width: "100%",
+        height:"15%",
         borderRadius: "10px",
         backgroundColor: "background.default",
         padding: "10px"

@@ -59,7 +59,6 @@ const FunctionalTasks = () => {
     if (userId) {
       const { text, title, significance } = createTask;
       const check = checkAllProperty(createTask);
-      console.log(check, createTask);
       if (status === "add" && checkAllProperty(createTask) && significance) {
         const responseOk = await addTask({
           id: `${Date.now()}`,
@@ -77,7 +76,6 @@ const FunctionalTasks = () => {
       const objectField = getFiledValues(createTask) as Partial<TaskEdit>;
       if (status === "edit" && Object.keys(objectField).length) {
         if (idTask) {
-          console.log(idTask, objectField);
           const responseOk = await editTask({ id: idTask, body: objectField });
           "data" in responseOk && responseOk.data
             ? setMessage("Задача была изменена")
