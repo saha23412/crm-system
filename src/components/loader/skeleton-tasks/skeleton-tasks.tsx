@@ -1,4 +1,4 @@
-import ContentLoader from "react-content-loader"
+import ContentLoader from "react-content-loader";
 
 const SkeletonTasks = () => (
   <ContentLoader
@@ -12,6 +12,6 @@ const SkeletonTasks = () => (
     <rect x="0" y="110" rx="3" ry="3" width="100%" height="95" />
     <rect x="0" y="220" rx="3" ry="3" width="100%" height="95" />
   </ContentLoader>
-)
+);
 
-export default SkeletonTasks
+export default SkeletonTasks;

@@ -42,7 +42,6 @@ const TaskCard: React.FC<TaskCardProps> = ({ task }) => {
         </Typography>
         <TaskIcons id={task.id} />
       </Box>
-
       <Typography sx={{ fontSize: "1.25rem" }}>{task.text}</Typography>
       <Typography>
         Сложность:

@@ -1,11 +1,11 @@
 "use client";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import CircularIndeterminate from "../../components/loader/circular-indeterminate/circular-indeterminate";
 import { useEffect } from "react";
 import { useGetUserByEmailQuery } from "@/store/service/user/user-api";
 import { useAppDispatch } from "@/store/store-hook";
 import { addCurrentUser } from "@/store/service/user/user-slice";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import CircularIndeterminate from "../../components/loader/circular-indeterminate/circular-indeterminate";
 import ProfileProps from "./model";
 
 const Profile: React.FC<ProfileProps> = ({ email, image }) => {
@@ -13,14 +13,14 @@ const Profile: React.FC<ProfileProps> = ({ email, image }) => {
   const { data, isLoading, isFetching, isError } = useGetUserByEmailQuery({
     email,
   });
-  console.log(data);
   useEffect(() => {
     if (data) {
       const { email, username, id, status } = data[0];
-      const avatar = data[0].avatar || image  || "";
+      const avatar = data[0].avatar || image || "";
       dispatch(addCurrentUser({ email, username, id, avatar, status }));
     }
   }, [data, dispatch, image, isError]);
+
   if (isLoading || isFetching) {
     return (
       <Box

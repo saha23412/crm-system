@@ -3,8 +3,6 @@ import Header from "@/components/header/header";
 import AuthorizedUserHeader from "../../components/authorized-user/authorized-user";
 import { useAppSelector } from "./../../store/store-hook";
 import { currentUser } from "@/store/service/user/selector";
-import { Box, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
 
 const HeaderTemplate = () => {
   const user = useAppSelector((state) => currentUser(state));
@@ -17,12 +15,9 @@ const HeaderTemplate = () => {
         padding: "10px",
       }}
     >
-            {user ? (
-              <AuthorizedUserHeader
-                avatar={user.avatar}
-                username={user.username}
-              />
-            ) : null}
+      {user ? (
+        <AuthorizedUserHeader avatar={user.avatar} username={user.username} />
+      ) : null}
     </Header>
   );
 };

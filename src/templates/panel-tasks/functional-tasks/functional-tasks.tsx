@@ -8,7 +8,7 @@ import createFormatDate from "@/utils/create-date";
 import ButtonAddStatus from "@/components/buttons-components/button-add-status/button-add-status";
 import { selectItemsTypeTask, selectItemsGrade } from "@/constants/select";
 import { ChangeEvent, useState } from "react";
-import { SelectChangeEvent, Typography } from "@mui/material";
+import { MenuItem, SelectChangeEvent, Typography } from "@mui/material";
 import {
   useAddTaskMutation,
   useEditTaskMutation,
@@ -58,7 +58,6 @@ const FunctionalTasks = () => {
   const handleClick = async () => {
     if (userId) {
       const { text, title, significance } = createTask;
-      const check = checkAllProperty(createTask);
       if (status === "add" && checkAllProperty(createTask) && significance) {
         const responseOk = await addTask({
           id: `${Date.now()}`,
@@ -116,15 +115,25 @@ const FunctionalTasks = () => {
           value={createTask.significance}
           onChange={onChange}
           name="significance"
-          selectsItem={selectItemsGrade}
-        />
+        >
+          {selectItemsGrade.map((item) => (
+            <MenuItem value={item.value} key={item.name} sx={{ padding: 1 }}>
+              {item.name}
+            </MenuItem>
+          ))}
+        </SelectCustom>
         <SelectCustom
           label="Тип задачи"
           value={createTask.title}
           onChange={onChange}
           name="title"
-          selectsItem={selectItemsTypeTask}
-        />
+        >
+          {selectItemsTypeTask.map((item) => (
+            <MenuItem value={item.value} key={item.name} sx={{ padding: 1 }}>
+              {item.name}
+            </MenuItem>
+          ))}
+        </SelectCustom>
         <ButtonPanel onClick={handleClick}>
           {status === "add" ? "Добавить задачу" : "Изменить задачу"}
         </ButtonPanel>

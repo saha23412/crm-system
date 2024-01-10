@@ -1,5 +1,4 @@
 import { scopeAdmin, scopeUser } from "@/constants/scope";
-import ListItem from "@mui/material/ListItem";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 
@@ -10,9 +9,9 @@ const Scope = ({ status }: { status: "admin" | "user" }) => {
       sx={{
         width: "100%",
         backgroundColor: "#485BA8",
-        padding:"15px",
-        borderRadius:"5px",
-        opacity:"0.97"
+        padding: "15px",
+        borderRadius: "5px",
+        opacity: "0.97",
       }}
       spacing={1}
     >

@@ -6,6 +6,7 @@ const ClientCheck = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     setClient(true);
   }, []);
+
   return <>{client ? children : null}</>;
 };
 

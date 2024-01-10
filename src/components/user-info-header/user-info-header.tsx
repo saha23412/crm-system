@@ -3,10 +3,10 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import Avatar from "@mui/material/Avatar";
-import UserInfoHeaderProps from "./model";
 import Link from "next/link";
 import RouterPathname from "@/global-models/router-pathname";
 import ButtonSignout from "./../buttons-components/button-signout/button-signout";
+import UserInfoHeaderProps from "./model";
 
 const UserInfoHeader: React.FC<UserInfoHeaderProps> = ({
   avatar,
@@ -38,7 +38,6 @@ const UserInfoHeader: React.FC<UserInfoHeaderProps> = ({
           )}
         </IconButton>
       </Link>
-
       <ButtonSignout />
     </Box>
   );

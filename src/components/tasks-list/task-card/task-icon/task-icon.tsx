@@ -29,6 +29,7 @@ const TaskIcons = ({ id }: { id: string }) => {
     }
     deleteTask({ id: idTask });
   };
+
   return (
     <Box>
       <ButtonCustom

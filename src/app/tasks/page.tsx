@@ -10,13 +10,13 @@ const Tasks = () => {
         height: "100%",
         width: "100%",
         display: "grid",
-        gap:"15px",
+        gap: "15px",
         gridTemplateColumns: "1fr 2fr ",
         padding: "15px 20px 20px",
       }}
     >
       <PanelTasks />
-      <TaskListTemplate/>
+      <TaskListTemplate />
     </Box>
   );
 };

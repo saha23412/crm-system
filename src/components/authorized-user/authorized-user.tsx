@@ -11,7 +11,7 @@ const AuthorizedUserHeader: React.FC<AuthorizedUserHeaderProps> = ({
   return (
     <Box
       sx={{
-        width:"100%",
+        width: "100%",
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",

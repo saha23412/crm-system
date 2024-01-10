@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
-import TasksListProps from "./model";
 import TaskCard from "./task-card/task-card";
+import TasksListProps from "./model";
 import styles from "./styles.module.css";
 
 const TasksList: React.FC<TasksListProps> = ({ tasks, sx }) => {

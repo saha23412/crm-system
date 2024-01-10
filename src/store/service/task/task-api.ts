@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Task, TaskEdit } from "@/global-models/task";
 import { SignificanceTasks } from "@/global-models/significance";
+import paramsCheck from "@/utils/check-params";
 
 export const taskApi = createApi({
   reducerPath: "taskApi",
@@ -11,12 +12,18 @@ export const taskApi = createApi({
   endpoints: (builder) => ({
     getTasks: builder.query<
       { response: Task[]; total: number },
-      { page: number; limit: number; significance: SignificanceTasks | "" }
+      {
+        page: number;
+        limit: number;
+        significance: SignificanceTasks | "";
+        title: string;
+      }
     >({
-      query: ({ page = 1, limit = 1, significance = "" }) =>
-        `tasks?_page=${page}&_limit=${limit}${
-          significance ? `"&significance="${significance}` : null
-        }`,
+      query: ({ page = 1, limit = 1, significance = "", title = "" }) =>
+        `tasks?${paramsCheck("significance", significance)}&${paramsCheck(
+          "title",
+          title
+        )}&_page=${page}&_limit=${limit}`,
       transformResponse: (response: Task[], meta) => {
         const metaTotalCount = Number(
           meta?.response?.headers.get("X-Total-Count")

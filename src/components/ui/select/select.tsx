@@ -1,5 +1,4 @@
 import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import SelectCustomProps from "./model";
@@ -8,12 +7,19 @@ const SelectCustom: React.FC<SelectCustomProps> = ({
   value,
   onChange,
   label,
-  selectsItem,
-  name
+  name,
+  children,
 }) => {
   return (
     <>
-      <FormControl variant="filled" sx={{ minWidth: 120, backgroundColor: "primary.light", borderRadius: 1 }}>
+      <FormControl
+        variant="filled"
+        sx={{
+          minWidth: 120,
+          backgroundColor: "primary.light",
+          borderRadius: 1,
+        }}
+      >
         <InputLabel id="demo-simple-select-autowidth-label">{label}</InputLabel>
         <Select
           labelId="demo-simple-select-autowidth-label"
@@ -23,11 +29,7 @@ const SelectCustom: React.FC<SelectCustomProps> = ({
           onChange={onChange}
           label={label}
         >
-          {selectsItem.map((item) => (
-            <MenuItem value={item.value} key={item.name} sx={{ padding: 1 }}>
-              {item.name}
-            </MenuItem>
-          ))}
+          {children}
         </Select>
       </FormControl>
     </>

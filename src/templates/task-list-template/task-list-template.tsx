@@ -1,34 +1,56 @@
 "use client";
 import Box from "@mui/material/Box";
 import TasksList from "@/components/tasks-list/tasks-list";
-import Pagination from "@mui/material/Pagination";
-import { useGetTasksQuery } from "@/store/service/task/task-api";
-import PaginationItem from "@mui/material/PaginationItem";
 import paginationLimit from "@/constants/pagination-limit";
-import Link from "next/link";
-import { useParams, usePathname, useSearchParams } from "next/navigation";
 import SkeletonTasks from "@/components/loader/skeleton-tasks/skeleton-tasks";
 import TasksListNot from "@/components/tasks-list-not/tasks-list-not";
 import PanelFilter from "../panel-filter/panel-filter";
-import { useRouter } from "next/navigation";
-import ButtonCustom from "@/components/ui/button/button";
+import PaginationTask from "@/components/pagination-task/pagination-task";
+import { useGetTasksQuery } from "@/store/service/task/task-api";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { type ChangeEvent, useState } from "react";
+import type { SelectChangeEvent } from "@mui/material";
+import { SignificanceTasks } from "@/global-models/significance";
 
 const TaskListTemplate = () => {
+  const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
-  let currentPage = Number(searchParams.get("_page")) || 1;
+  const currentPage = Number(searchParams.get("_page")) || 1;
+  const significance =
+    (searchParams.get("significance") as SignificanceTasks) || "";
+  const title = searchParams.get("title") || "";
+  const [filter, setFilter] = useState<{
+    significance: SignificanceTasks | "";
+    title: string;
+  }>({ significance: significance || "", title: title || "" });
+  const onChange = (
+    event: ChangeEvent<HTMLInputElement> | SelectChangeEvent<unknown>
+  ) => {
+    const { name, value } = event.target;
+    setFilter((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
+  const resetFilter = () => {
+    setFilter({ significance: "", title: "" });
+    router.replace(pathname, undefined);
+  };
+
   const { isLoading, data, isFetching, isError } = useGetTasksQuery({
     page: currentPage,
     limit: paginationLimit,
-    significance: "easy",
+    significance: significance,
+    title: title,
   });
-
+  const dataCheck = data && data.response;
   if (isLoading || isFetching) {
     return <SkeletonTasks />;
   }
   if (isError) {
     return <>Ошибка</>;
   }
-  if (data && data.response && data.response.length > 0) {
+  if (dataCheck && data.response.length > 0) {
     const count = Math.ceil(data.total / paginationLimit);
     return (
       <Box
@@ -41,45 +63,22 @@ const TaskListTemplate = () => {
           flexDirection: "column",
         }}
       >
-        <PanelFilter />
+        <PanelFilter
+          resetFilter={resetFilter}
+          onChange={onChange}
+          filterParams={filter}
+        />
         <TasksList
           tasks={data.response}
           sx={{
             height: "90%",
           }}
         />
-        <Pagination
-          count={count}
-          page={currentPage}
-          siblingCount={0}
-          sx={{
-            height: "10%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "flex-end",
-          }}
-          boundaryCount={1}
-          renderItem={(item) => {
-            return (
-              <PaginationItem
-                component={Link}
-                sx={{
-                  backgroundColor: "background.default",
-                  "&:hover": {
-                    backgroundColor: "primary.main",
-                    transition: "ease .5s",
-                  },
-                }}
-                href={`?_page=${item.page}&_limit=${paginationLimit}`}
-                {...item}
-              />
-            );
-          }}
-        />
+        <PaginationTask count={count} currentPage={currentPage} />
       </Box>
     );
   }
-  if (data && data.response && data.response.length === 0) {
+  if (dataCheck && data.response.length === 0) {
     const count = Math.ceil(data.total / paginationLimit);
     return <TasksListNot count={count} />;
   }

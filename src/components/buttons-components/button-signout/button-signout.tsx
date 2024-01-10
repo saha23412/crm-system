@@ -1,10 +1,10 @@
 import Typography from "@mui/material/Typography";
 import RouterPathname from "@/global-models/router-pathname";
 import ExitToAppRoundedIcon from "@mui/icons-material/ExitToAppRounded";
+import ButtonCustom from "@/components/ui/button/button";
 import { signOut } from "next-auth/react";
 import { reset } from "@/store/service/user/user-slice";
 import { useAppDispatch } from "@/store/store-hook";
-import ButtonCustom from "@/components/ui/button/button";
 
 const ButtonSignout = () => {
   const dispatch = useAppDispatch();
@@ -15,6 +15,7 @@ const ButtonSignout = () => {
       dispatch(reset());
     });
   };
+
   return (
     <ButtonCustom onClick={userSignOUT} variant="contained">
       <Typography

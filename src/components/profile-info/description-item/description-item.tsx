@@ -5,6 +5,7 @@ const DescriptionItem: React.FC<DescriptionItemProps> = ({
   title,
   descriptionTitle,
 }) => {
+
   return (
     <Typography sx={{ fontSize: "1.25rem", color: "white" }}>
       <Typography

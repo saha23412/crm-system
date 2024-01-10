@@ -2,10 +2,10 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import img from "@/assets/task-not.svg";
-import TasksListNotProps from "./model";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import paginationLimit from "@/constants/pagination-limit";
+import TasksListNotProps from "./model";
 
 const TasksListNot: React.FC<TasksListNotProps> = ({ count }) => {
   const pathname = usePathname();

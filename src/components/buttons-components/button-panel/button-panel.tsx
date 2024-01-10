@@ -6,7 +6,8 @@ const ButtonPanel: React.FC<ButtonPanelProps> = ({ children, onClick }) => {
     <ButtonCustom
       onClick={onClick}
       sx={{
-        width:"100%",
+        width: "100%",
+        height: "100%",
         backgroundColor: "primary.light",
         "&:hover": {
           backgroundColor: "#c0c0c0",
