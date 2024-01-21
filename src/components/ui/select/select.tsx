@@ -11,28 +11,28 @@ const SelectCustom: React.FC<SelectCustomProps> = ({
   children,
 }) => {
   return (
-    <>
-      <FormControl
-        variant="filled"
-        sx={{
-          minWidth: 120,
-          backgroundColor: "primary.light",
-          borderRadius: 1,
-        }}
+    <FormControl
+      variant="filled"
+      sx={{
+        minWidth: 200,
+        backgroundColor: "primary.light",
+        height: "100%",
+        borderRadius: 1,
+      }}
+    >
+      <InputLabel id="demo-simple-select-autowidth-label">{label}</InputLabel>
+      <Select
+        labelId="demo-simple-select-autowidth-label"
+        id="demo-simple-select-autowidth"
+        value={value}
+        name={name}
+        onChange={onChange}
+        label={label}
+        sx={{ height: "100%" }}
       >
-        <InputLabel id="demo-simple-select-autowidth-label">{label}</InputLabel>
-        <Select
-          labelId="demo-simple-select-autowidth-label"
-          id="demo-simple-select-autowidth"
-          value={value}
-          name={name}
-          onChange={onChange}
-          label={label}
-        >
-          {children}
-        </Select>
-      </FormControl>
-    </>
+        {children}
+      </Select>
+    </FormControl>
   );
 };
 

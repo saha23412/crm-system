@@ -11,7 +11,7 @@ const Tasks = () => {
         width: "100%",
         display: "grid",
         gap: "15px",
-        gridTemplateColumns: "1fr 2fr ",
+        gridTemplateColumns: "1fr 2.5fr ",
         padding: "15px 20px 20px",
       }}
     >
